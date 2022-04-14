@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common.css">
+    <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common-shared.css">
+    <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
+  </head>
+  <body>
+    <div style="padding:8px;">
+      <h1>Custom CSS</h1>
+      <p>Enter your custom CSS in the box below. <br/>Note: Especially after multiple changes without reset, reopening affected tabs might be necessary.</p>
+      <form>
+        <textarea style="width: 95%; max-width: 95%;" id="global_css_override" rows="30">
+        </textarea>
+        <p>
+          <button type="submit" id="btn-submit">Save</button>
+          <button type="button" id="btn-reset">Reset</button>
+          <div id="txt-saveStatus"></div>
+        </p>
+      </form>
+    </div>
+    <script src="options.js"></script>
+  </body>
+</html>

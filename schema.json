@@ -1,0 +1,31 @@
+[
+  {
+    "namespace": "tbuicss",
+    "functions": [
+      {
+        "name": "updateCss",
+        "description": "Updates css for the client.",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "css",
+            "description": "CSS",
+            "type": "string",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "resetCss",
+        "description": "Resets the custom set css of this plugin.",
+        "type": "function",
+        "async": true,
+        "parameters": [ ]
+      }
+    ],
+    "events": [ 
+
+    ]
+  }
+]
