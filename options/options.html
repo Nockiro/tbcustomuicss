@@ -2,23 +2,47 @@
 <html>
   <head>
     <meta charset="utf-8"/>
+    <title>Custom CSS Settings</title>
     <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common.css">
     <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common-shared.css">
     <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
+    <style>
+      .wrapper {
+        display: grid;
+        gap: 10px;
+        grid-template-rows: min-content min-content min-content;
+        height: 100%;
+      }
+
+      .intro { grid-row: 1; }
+      .editor { grid-row: 2; }
+      .notes { grid-row: 3; }
+
+      body { padding: 8px; }
+    
+      textarea {
+        height: 200px;
+      }
+      </style>
   </head>
   <body>
-    <div style="padding:8px;">
-      <h1>Custom CSS</h1>
-      <p>Enter your custom CSS in the box below. <br/>Note: Especially after multiple changes without reset, reopening affected tabs might be necessary.</p>
+    <div class="wrapper">
+      <div class="intro">
+        <h1>Custom CSS</h1>
+        <p>Enter your custom CSS in the box below. <br/>Note: Especially after multiple changes without reset, reopening affected tabs might be necessary.</p>
+      </div>
+      <div class="editor">
       <form>
-        <textarea style="width: 95%; max-width: 95%;" id="global_css_override" rows="30">
-        </textarea>
-        <p>
+        <textarea style="width: 95%; max-width: 95%;" id="global_css_override" rows="30"></textarea>
+        <div>
           <button type="submit" id="btn-submit">Save</button>
           <button type="button" id="btn-reset">Reset</button>
-          <div id="txt-saveStatus"></div>
-        </p>
+        </div>
       </form>
+      </div>
+      <div class="notes">
+        <div id="txt-saveStatus"></div>
+      </div>
     </div>
     <script src="options.js"></script>
   </body>
