@@ -1,10 +1,10 @@
 {
-    "name": "Global Custom UI CSS",
+    "name": "Custom UI CSS",
     "description": "Style Thunderbirds UI with your own custom CSS.",
     "version": "1.0",
     "applications": {
         "gecko": {
-            "id": "TbUiCustomCss@nockiro.de",
+            "id": "tbcustomuicss@nockiro.de",
             "strict_min_version": "78"
         }
     },
@@ -18,11 +18,11 @@
     },
     "permissions": ["storage"],
     "experiment_apis": {
-        "tbuicss": {
+        "tbcustomuicss": {
             "schema": "schema.json",
             "parent": {
                 "scopes": [ "addon_parent" ],
-                "paths": [ [ "tbuicss" ] ],
+                "paths": [ [ "tbcustomuicss" ] ],
                 "script": "implementation.js"
             }
         }

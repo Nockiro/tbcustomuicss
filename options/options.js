@@ -3,27 +3,27 @@ function saveOptions(e) {
     let uiCss = document.querySelector("#global_css_override").value;
 
     // note: inside the experimental implementation, browser storage is not accessable this way.
-    browser.storage.sync.set({ TbUiCss: uiCss });
-    browser.tbuicss.updateCss(uiCss);
+    browser.storage.sync.set({ tbcustomuicss: uiCss });
+    browser.tbcustomuicss.update(uiCss);
 
     document.querySelector("#txt-saveStatus").textContent = "> CSS stored. Don't forget to reopen tabs if you don't see changes applied."
   }
   
   function resetOptions() {
-      browser.storage.sync.set({ TbUiCss: '' });
+      browser.storage.sync.set({ tbcustomuicss: '' });
       document.querySelector("#global_css_override").value = "";
-      browser.tbuicss.resetCss();  
+      browser.tbcustomuicss.reset();  
 
       document.querySelector("#txt-saveStatus").textContent = "> CSS reset."
   }
   
   function restoreOptions() {
-    var storageItem = browser.storage.sync.get('TbUiCss');
+    var storageItem = browser.storage.sync.get('tbcustomuicss');
     storageItem.then((res) => {
-      document.querySelector("#global_css_override").value = res.TbUiCss || '';
+      document.querySelector("#global_css_override").value = res.tbcustomuicss || '';
 
       if (res.custom_css !== undefined) {
-        browser.tbuicss.updateCss(res.TbUiCss);
+        browser.tbcustomuicss.update(res.tbcustomuicss);
       }
     });
   }

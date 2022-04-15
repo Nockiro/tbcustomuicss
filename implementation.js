@@ -11,7 +11,7 @@
   var { OS } = ChromeUtils.import("resource://gre/modules/osfile.jsm");
   /* If needed: 
      var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
-     var extension = ExtensionParent.GlobalManager.getExtension("TbUiCss@nockiro.de");*/
+     var extension = ExtensionParent.GlobalManager.getExtension("tbcustomuicss@nockiro.de");*/
 
   const styleSheetService = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
   const styleSheetTmpPath = OS.Path.join(OS.Constants.Path.profileDir, "TbUiGlobalCssOverride.css");
@@ -34,7 +34,7 @@
   function cacheStylesheet(css, onSuccess) {
     // since the styleSheetService only takes files: write current setting to temporary file before loading
     return OS.File.writeAtomic(styleSheetTmpPath, css).then(function (aResult) {
-      console.log(`Saved temporary global css: ${aResult} bytes written.`);  
+      console.log(`Saved temporary css: ${aResult} bytes written.`);  
 
       if (onSuccess)    
         onSuccess();
@@ -42,21 +42,21 @@
   }
 
   // Implementation of functions [and events] defined in schema.json
-  class tbuicss extends ExtensionCommon.ExtensionAPI {
+  class tbcustomuicss extends ExtensionCommon.ExtensionAPI {
     getAPI(context) {
       return {
-        tbuicss: {
+        tbcustomuicss: {
 
-          updateCss: async function (css) {
+          update: async function (css) {
             resetStylesheet();     
             
             cacheStylesheet(css, () => {              
-              // since tab.insertCss doesn't work, inject css into the window (but not before tabs are created)
+              // since tab.insertCss doesn't work (especially with calendar/tasks), inject css into the window
               loadStylesheet(styleSheetTmpFileUri);
             });
           },
 
-          resetCss: async function () {
+          reset: async function () {
             resetStylesheet();
             cacheStylesheet("");
           },
@@ -82,6 +82,6 @@
     }
   };
 
-  exports.tbuicss = tbuicss;
+  exports.tbcustomuicss = tbcustomuicss;
 
 })(this)

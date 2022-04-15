@@ -1,9 +1,9 @@
 [
   {
-    "namespace": "tbuicss",
+    "namespace": "tbcustomuicss",
     "functions": [
       {
-        "name": "updateCss",
+        "name": "update",
         "description": "Updates css for the client.",
         "type": "function",
         "async": true,
@@ -17,7 +17,7 @@
         ]
       },
       {
-        "name": "resetCss",
+        "name": "reset",
         "description": "Resets the custom set css of this plugin.",
         "type": "function",
         "async": true,
