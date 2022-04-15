@@ -3,8 +3,8 @@
 An extension for loading custom CSS rules into thunderbirds appearance.
 
 ## What is it?
-This extension allows applying custom CSS rules to the UI of Thunderbird via an application-internal settings page from the extension.
-Effectively, this avoids the need for creating/importing a custom `userChrome.css` file in your profile folder to apply minor CSS rules.
+This extension allows applying custom CSS rules to the UI of Thunderbird via an application-internal settings page from the extension.  
+Effectively, this avoids the need for creating/importing a custom `userChrome.css` file in your profile folder to apply minor CSS rules.  
 It can also act as independent addition to an already existing userChrome file while keeping the changes contained in the extension.
 
 ## How to install it
@@ -27,9 +27,9 @@ An example, however, would be to fade-out past days in the calendar:
   calendar-month-day-box[relation="past"] > * { opacity: 0.3; } 
   ```
 3. Click "Save" and enjoy:
-<img src="https://github.com/Nockiro/tbcustomuicss/raw/master/readme-img/calendar-tweak.png" height="256">  
+<img src="https://github.com/Nockiro/tbcustomuicss/raw/master/readme-img/calendar-tweak.png" height="256">    
 (Click to view full-size image)
-
+  
 Note that in some cases, in order for the changes to take effect, the tab or window has to be manually closed and reopened.
 
 ## Technical notes
@@ -39,5 +39,5 @@ Note that in some cases, in order for the changes to take effect, the tab or win
 2. Since the API used for applying themes (to my knowledge) is only designed to handle files, the extension currently uses a temporary file for loading the stylesheet.
    The stylesheet itself however is stored and loaded from the local storage and the temporary file is deleted upon deactivation or removal of the extension.
 3. Since the WebExtension Experimental API is used, the extension potentially has no limits in accessing the file system. This is also the reason Thunderbird asks for a privilege to access the whole system, which the extension does not do.
-4. This is my first thunderbird extension (or browser extension in general), so code might be unoptimized and functions might be missing.
+4. This is my first thunderbird extension (or browser extension in general), so code might be unoptimized and functions might be missing.  
    If you notice something problematic or improvable, don't hesitate to write me a mail or open an issue!
