@@ -2,6 +2,8 @@
 
 "use strict";
 
+XPCOMUtils.defineLazyGlobalGetters(this, ["IOUtils", "PathUtils"]);
+
 // Using a closure to not leak anything but the API to the outside world.
 (function (exports) {
 
