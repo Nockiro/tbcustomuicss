@@ -7,15 +7,15 @@
 
   // Get various parts of the WebExtension framework that we need.
   var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-  var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-  var { OS } = ChromeUtils.import("resource://gre/modules/osfile.jsm");
+  var Services = globalThis.Services || ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
+  
   /* If needed: 
      var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
      var extension = ExtensionParent.GlobalManager.getExtension("tbcustomuicss@nockiro.de");*/
 
   const styleSheetService = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
-  const styleSheetTmpPath = OS.Path.join(OS.Constants.Path.profileDir, "TbUiGlobalCssOverride.css");
-  const styleSheetTmpFileUri = Services.io.newURI(OS.Path.toFileURI(styleSheetTmpPath));
+  const styleSheetTmpPath = PathUtils.join(PathUtils.profileDir, "TbUiGlobalCssOverride.css");
+  const styleSheetTmpFileUri = Services.io.newURI(PathUtils.toFileURI(styleSheetTmpPath));
 
   function loadStylesheet(styleSheetUri) {
     resetStylesheet();
@@ -33,7 +33,7 @@
 
   function cacheStylesheet(css, onSuccess) {
     // since the styleSheetService only takes files: write current setting to temporary file before loading
-    return OS.File.writeAtomic(styleSheetTmpPath, css).then(function (aResult) {
+    return IOUtils.writeUTF8(styleSheetTmpPath, css).then(function (aResult) {
       console.log(`Saved temporary css: ${aResult} bytes written.`);  
 
       if (onSuccess)    
@@ -75,7 +75,7 @@
       cacheStylesheet("");
 
       // if the add-on is removed, we don't want to have any spare files laying around
-      OS.File.remove(styleSheetTmpPath);
+      IOUtils.remove(styleSheetTmpPath);
 
       // Example says, the following line invalidates js caches
       Services.obs.notifyObservers(null, "startupcache-invalidate", null);
