@@ -8,6 +8,7 @@
     <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
     <style>
       .wrapper {
+        margin: 4px;
         display: grid;
         gap: 10px;
         grid-template-rows: min-content min-content min-content;
@@ -22,6 +23,32 @@
     
       textarea {
         height: 200px;
+        margin-bottom: 10px;
+        width: 95%;
+        max-width: 95%;
+      }
+      fieldset {
+        border: 1px solid #555 !important;
+        margin-bottom: 10px !important;
+        padding: 4px;
+        width: 95%;
+        max-width: 95%;
+      }
+      label {
+        line-height: 0 !important;
+      }
+      legend {
+        padding: 1px 10px;
+      }
+      fieldset > div  {
+        margin: 4px;
+      }
+      fieldset > div > span > input {
+        float: left;
+      }
+      fieldset > div > span {
+        display: block;
+        margin-bottom: 8px;
       }
       </style>
   </head>
@@ -32,13 +59,26 @@
         <p>Enter your custom CSS in the box below. <br/>Note: Especially after multiple changes without reset, reopening affected tabs might be necessary.</p>
       </div>
       <div class="editor">
-      <form>
-        <textarea style="width: 95%; max-width: 95%;" id="global_css_override" rows="30"></textarea>
-        <div>
-          <button type="submit" id="btn-submit">Save</button>
-          <button type="button" id="btn-reset">Reset</button>
-        </div>
-      </form>
+        <form>
+          <textarea id="global_css_override" rows="30"></textarea>
+          <fieldset>
+            <legend>Preferred storage location</legend>
+              <div>
+                <span>
+                  <input type="radio" id="inp_sync_storage" name="storage-method" value="sync"/>
+                  <label for="inp-sync-storage">Sync Storage (low maximum content size, but can be synced by Thunderbird)</label>
+                </span>
+                <span>
+                  <input type="radio" id="inp_local_storage" name="storage-method" value="local"/>
+                  <label for="inp-local-storage">Local Storage (no client-side limit on content size, but is kept local)</label>
+                </span>
+              </div>
+          </fieldset>
+          <div>
+            <button type="submit" id="btn-submit">Save</button>
+            <button type="button" id="btn-reset">Reset</button>
+          </div>
+        </form>
       </div>
       <div class="notes">
         <div id="txt-saveStatus"></div>
