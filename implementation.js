@@ -8,11 +8,11 @@ XPCOMUtils.defineLazyGlobalGetters(this, ["IOUtils", "PathUtils"]);
 (function (exports) {
 
   // Get various parts of the WebExtension framework that we need.
-  var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-  var Services = globalThis.Services || ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
+  var { ExtensionCommon } = ChromeUtils.importESModule("resource://gre/modules/ExtensionCommon.sys.mjs");
+  var Services = globalThis.Services || ChromeUtils.importESModule("resource://gre/modules/Services.sys.mjs").Services;
   
   /* If needed: 
-     var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+     var { ExtensionParent } = ChromeUtils.importESModule("resource://gre/modules/ExtensionParent.sys.mjs");
      var extension = ExtensionParent.GlobalManager.getExtension("tbcustomuicss@nockiro.de");*/
 
   const styleSheetService = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);

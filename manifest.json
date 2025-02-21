@@ -1,11 +1,11 @@
 {
     "name": "Custom UI CSS",
     "description": "Style Thunderbirds UI with your own custom CSS.",
-    "version": "1.2",
+    "version": "1.2.1",
     "applications": {
         "gecko": {
             "id": "tbcustomuicss@nockiro.de",
-            "strict_min_version": "102.0"
+            "strict_min_version": "126.0"
         }
     },
     "background": {
